@@ -1,0 +1,16 @@
+In this design pattern there are two type of objects.
+1. Observable
+2. Observer
+
+This design pattern contains
+Observable Interface -->
+contains methods like
+List<Observer interface> obj  // Has-A multiple relationship with the Observer interface.
+1. add (Observer obj)  //Registration
+2. remove (Observer obj)
+3. notify ()
+setData()
+
+Observer Interface -->
+contains methods like
+1. update ()
