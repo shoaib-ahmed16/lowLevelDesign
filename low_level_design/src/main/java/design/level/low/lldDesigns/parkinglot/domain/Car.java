@@ -1,6 +1,6 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
-public class Car extends Vehicle{
+public class Car extends Vehicle {
 
     private static final int requireSlotSize=1;
 

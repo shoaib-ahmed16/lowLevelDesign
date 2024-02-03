@@ -1,6 +1,6 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
-public class Bike extends Vehicle{
+public class Bike extends Vehicle {
     private static final int requireSlotSize=1;
     public Bike(String licensePlate) {
 

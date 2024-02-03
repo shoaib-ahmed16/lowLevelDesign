@@ -1,4 +1,4 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
 import java.time.LocalDateTime;
 

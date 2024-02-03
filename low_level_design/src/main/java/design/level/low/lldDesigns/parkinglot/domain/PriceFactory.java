@@ -1,4 +1,6 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
+
+import design.level.low.lldDesigns.parkinglot.domain.Price;
 
 public class PriceFactory {
     private PriceFactory(){}

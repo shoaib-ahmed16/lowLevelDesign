@@ -1,4 +1,9 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
+
+import design.level.low.lldDesigns.parkinglot.domain.Bike;
+import design.level.low.lldDesigns.parkinglot.domain.Bus;
+import design.level.low.lldDesigns.parkinglot.domain.Car;
+import design.level.low.lldDesigns.parkinglot.domain.Vehicle;
 
 public class VehicleFactory {
 

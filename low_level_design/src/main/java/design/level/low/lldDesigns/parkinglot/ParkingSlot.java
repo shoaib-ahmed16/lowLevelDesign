@@ -1,75 +1,105 @@
 package design.level.low.lldDesigns.parkinglot;
 
+import com.sun.source.tree.ReturnTree;
+import design.level.low.lldDesigns.parkinglot.domain.*;
+
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class ParkingSlot {
     private final int totalParkingSlot;
     private int vacantParkingSlot;
     private int occupiedParkingSlot;
 
-    private static int ticketNo=0;
-    private Map<Integer,Ticket> ticketNumber;
-    private List<Vehicle> parkedVehicle;
+    private int ticketNo=0;
+
+    private Map<String, Ticket> parkingTicketRecords;
+    private Set<Vehicle> parkedVehicle;
+
+    private List<ParkingLotObserver> observers = new ArrayList<>();
+
+    public int getTotalParkingSlot() {
+        return totalParkingSlot;
+    }
+
+    public int getVacantParkingSlot() {
+        return vacantParkingSlot;
+    }
+
+
+    public int getOccupiedParkingSlot() {
+        return occupiedParkingSlot;
+    }
+
+    public  int getTicketNo() {
+        return this.ticketNo;
+    }
+
+    public  void setTicketNo(int ticketNo) {
+        this.ticketNo = ticketNo;
+    }
+
+
+    public Set<Vehicle> getParkedVehicle() {
+        return parkedVehicle;
+    }
+
+    public void addObserver(ParkingLotObserver observer) {
+        observers.add(observer);
+    }
 
     public  ParkingSlot(){
-        this.totalParkingSlot=Constants.ParkingSpace.getSlotSize();
+        this.totalParkingSlot= Constants.ParkingSpace.getSlotSize();
         this.vacantParkingSlot=Constants.ParkingSpace.getSlotSize();
-        ticketNumber= new HashMap<>();
-        parkedVehicle = new ArrayList<>();
-        parkingServiceInitializer();
+        parkingTicketRecords= new HashMap<>();
+        parkedVehicle = new HashSet<>();
+
     }
-    public void parkingServiceInitializer(){
-        boolean parkingHaveSpace=true;
-        while(parkingHaveSpace){
-            Scanner sc= new Scanner(System.in);
-            System.out.println("For parking press 1.");
-            System.out.println("For Leaving press 2.");
-            int ops=Integer.parseInt(sc.nextLine());
-            if(ops==1){
-                System.out.println("Please Chose the parking type :");
-                System.out.println("for hourly enter hr");
-                System.out.println("for fixed entre fix");
-                Price price=null;
-                Vehicle vehicle=null;
-                try{
-                    price=PriceFactory.getPriceType(sc.nextLine());
-                    System.out.println("Please enter your vehicle number: ");
-                    String licensePlateNo=sc.nextLine();
-                    System.out.println("Please enter your vehicle type:");
-                    String type=sc.nextLine();
-                    vehicle= VehicleFactory.getVehicleObj(type,licensePlateNo);
-                    System.out.println("Your Ticket No:"+generateTicket(vehicle,price));
-                    System.out.println("Your parking ticket has been issued successfully. Please keep your Ticket Number secure; it will be required when exiting the parking lot.");
+    public void addTicketToRecord(Ticket ticket){
+        parkingTicketRecords.put(String.valueOf(ticket.getTicketNo()),ticket);
+    }
+    public Ticket  removeTicketToRecord(String ticketNo){
+       return parkingTicketRecords.remove(ticketNo);
+    }
 
-                }catch (Exception exc){
-                    System.out.println(exc.getMessage());
-                }
+    private void notifyObservers(){
+        for (ParkingLotObserver observer : observers) {
+            observer.parkingLotFull();
+        }
+    }
+    public String parkVehicle(Vehicle vehicle){
+            parkedVehicle.add(vehicle);
+            this.occupiedParkingSlot+=vehicle.getSize();
+            this.vacantParkingSlot-=vehicle.getSize();
+            if (isFull()) {
+                notifyObservers();
             }
-            if(ops==2){
+            return "Your Vehicle No: +" +vehicle.getLicensePlate() +" is successfully parked " ;
+    }
 
-            }
-            if(occupiedParkingSlot>=totalParkingSlot){
-                System.out.println("Parking is fully Occupied. Sorry For the inconvenience");
-                parkingHaveSpace=false;
-            }
+    public Vehicle unparkedVehicle(String ticketNo){
+        Ticket ticket=null;
+        if(!parkingTicketRecords.containsKey(ticketNo)){
+            System.out.println("No record Found for this Parking ticket");
+            return null;
+        }else{
+            ticket =removeTicketToRecord(ticketNo);
+            ticket.setExitTime(LocalDateTime.now());
+            Vehicle vehicle =ticket.getVehicle();
+            parkedVehicle=parkedVehicle.stream().dropWhile(p->p.getLicensePlate().equals(vehicle.getLicensePlate())).collect(Collectors.toSet());
+            this.vacantParkingSlot+=vehicle.getSize();
+            this.occupiedParkingSlot-=vehicle.getSize();
+            return vehicle;
         }
     }
 
-    public int generateTicket(Vehicle vehicle,Price price){
-        Ticket ticket =new Ticket();
-        ticket.setTicketNo(++ticketNo);
-        ticket.setEntryTime(LocalDateTime.now());
-        ticket.setPrice(price);
-        ticket.setVehicle(vehicle);
-        ticket.setLicencePlateNo(vehicle.getLicensePlate());
-        ticketNumber.put(ticketNo,ticket);
-        return ticketNo;
-    }
-    public String parkVehicle(Vehicle vehicle){
-        return "hello";
+    public boolean isFull(){
+        return this.getOccupiedParkingSlot() >= this.getTotalParkingSlot();
     }
 
-
+    public boolean checkSlot(int size){
+        return (this.vacantParkingSlot-size>=0);
+    }
 
 }

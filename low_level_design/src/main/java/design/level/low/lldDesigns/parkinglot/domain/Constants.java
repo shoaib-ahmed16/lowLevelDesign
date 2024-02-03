@@ -1,11 +1,10 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
 public enum Constants {
     BIKE(1,"BIKE"),
     CAR(2,"CAR"),
     BUS(4,"BUS"),
-
-    ParkingSpace(200,"intialParkingSpace");
+    ParkingSpace(6,"intialParkingSpace");
     private  final int slotSize;
     private final String type;
     public int getSlotSize(){

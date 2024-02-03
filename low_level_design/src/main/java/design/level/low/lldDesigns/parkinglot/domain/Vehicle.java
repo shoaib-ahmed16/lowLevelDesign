@@ -1,4 +1,4 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
 public class Vehicle {
     private String licensePlate;
@@ -24,4 +24,12 @@ public class Vehicle {
         this.type=type;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "licensePlate='" + licensePlate + '\'' +
+                ", size=" + size +
+                ", type='" + type + '\'' +
+                '}';
+    }
 }

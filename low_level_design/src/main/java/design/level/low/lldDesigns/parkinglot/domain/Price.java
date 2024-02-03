@@ -1,4 +1,4 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.domain;
 
 public enum Price {
     HOURLY(50),
