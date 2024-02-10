@@ -1,4 +1,4 @@
-package design.level.low.lldDesigns.parkinglot.domain;
+package design.level.low.lldDesigns.parkinglot.usedDesignPattern;
 
 import design.level.low.lldDesigns.parkinglot.domain.Bike;
 import design.level.low.lldDesigns.parkinglot.domain.Bus;

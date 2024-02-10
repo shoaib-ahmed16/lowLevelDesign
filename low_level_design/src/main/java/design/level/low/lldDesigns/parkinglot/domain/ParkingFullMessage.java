@@ -1,6 +1,8 @@
 package design.level.low.lldDesigns.parkinglot.domain;
 
-public class ParkingFullMessage implements ParkingLotObserver{
+import design.level.low.lldDesigns.parkinglot.usedDesignPattern.ParkingLotObserver;
+
+public class ParkingFullMessage implements ParkingLotObserver {
     @Override
     public void parkingLotFull() {
         System.out.println("Parking is fully Occupied. Sorry For the inconvenience");

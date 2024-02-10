@@ -1,4 +1,4 @@
-package design.level.low.lldDesigns.parkinglot.domain;
+package design.level.low.lldDesigns.parkinglot.usedDesignPattern;
 
 public interface ParkingLotObserver {
     void parkingLotFull();

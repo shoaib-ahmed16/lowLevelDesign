@@ -1,6 +1,9 @@
-package design.level.low.lldDesigns.parkinglot.domain;
+package design.level.low.lldDesigns.parkinglot;
 
-import design.level.low.lldDesigns.parkinglot.ParkingSlot;
+import design.level.low.lldDesigns.parkinglot.service.ParkingSlot;
+import design.level.low.lldDesigns.parkinglot.domain.*;
+import design.level.low.lldDesigns.parkinglot.usedDesignPattern.PriceFactory;
+import design.level.low.lldDesigns.parkinglot.usedDesignPattern.VehicleFactory;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;

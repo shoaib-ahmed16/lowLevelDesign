@@ -1,7 +1,7 @@
-package design.level.low.lldDesigns.parkinglot;
+package design.level.low.lldDesigns.parkinglot.service;
 
-import com.sun.source.tree.ReturnTree;
 import design.level.low.lldDesigns.parkinglot.domain.*;
+import design.level.low.lldDesigns.parkinglot.usedDesignPattern.ParkingLotObserver;
 
 import java.time.LocalDateTime;
 import java.util.*;
