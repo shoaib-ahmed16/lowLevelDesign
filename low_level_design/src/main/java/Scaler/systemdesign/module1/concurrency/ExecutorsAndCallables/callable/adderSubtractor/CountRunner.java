@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class CountRunner {
     public static void main(String[] args) {
         Count count= new Count();
-        Lock lock = new ReentrantLock();
+        Lock lock = new ReentrantLock(); //ProcessLock
         Adder adder = new Adder(count,lock);
         Subtract subtract = new Subtract(count,lock);
         ExecutorService executor = Executors.newCachedThreadPool();
