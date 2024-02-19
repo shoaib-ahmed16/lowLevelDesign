@@ -1,31 +1,32 @@
 package Scaler.systemdesign.module1.concurrency.ExecutorsAndCallables.callable.producerAndConsumer;
 
 import java.util.Queue;
-import java.util.concurrent.locks.Lock;
+import java.util.concurrent.Semaphore;
 
 public class Producer implements Runnable{
 
     private String name;
     private Queue<UnitOfWork> buffer;
-    private Integer maxSize;
-    private Lock lock;
+    private Semaphore forProducer;
+    private Semaphore forConsumer;
+
     @Override
     public void run() {
         while (true){
-//            synchronized (buffer) {
-                lock.lock();
-                if (buffer.size() < this.maxSize) {
-                    buffer.add(new UnitOfWork());
-                    System.out.println(this.name + " produced food. Existing buffer Size:" + this.buffer.size());
-                }
-                lock.unlock();
-//            }
+            try {
+                forProducer.acquire();
+                buffer.add(new UnitOfWork());
+                forConsumer.release();
+                System.out.println(this.name + " produced food. Existing buffer Size:" + this.buffer.size());
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
-    public Producer(String name,Queue<UnitOfWork> buffer,Integer size,Lock lock){
+    public Producer(String name,Queue<UnitOfWork> buffer,Semaphore forProducer,Semaphore forConsumer){
         this.name=name;
         this.buffer=buffer;
-        this.maxSize=size;
-        this.lock=lock;
+        this.forProducer=forProducer;
+        this.forConsumer=forConsumer;
     }
 }
