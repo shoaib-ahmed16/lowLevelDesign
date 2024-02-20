@@ -9,6 +9,30 @@ public class Database {
     private DatabaseType type;
     private  Boolean isCompressed;
 
+    public String getName() {
+        return name;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public DatabaseType getType() {
+        return type;
+    }
+
+    public Boolean getCompressed() {
+        return isCompressed;
+    }
+
     private Database(){}
 
     //Trick 1 - Builder method;
