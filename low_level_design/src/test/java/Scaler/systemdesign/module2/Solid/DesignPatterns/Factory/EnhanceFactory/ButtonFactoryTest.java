@@ -9,6 +9,7 @@ class ButtonFactoryTest {
 
     @Test
     void testRoundButton(){
+        //Condition dependency injection -> Qualifier
         ButtonFactory buttonFactory = new RoundButtonFactory();
         Button button = buttonFactory.createButton(10.0,20.0,null);
         assertTrue(button instanceof RoundButton);
