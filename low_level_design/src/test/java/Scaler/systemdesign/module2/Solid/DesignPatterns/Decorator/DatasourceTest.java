@@ -15,9 +15,9 @@ class DatasourceTest {
     void testEncryption(){
         //EncryptedDatasource
         Datasource db = new FileDatasource();
-        Datasource encrptedDb = new EncryptionDecorator(db);
-        Datasource compresseDb = new CompressionDecorator(encrptedDb);
-        assertEquals("Base - Decrypted - Decompressed",compresseDb.read());
+        Datasource encryptedDb = new EncryptionDecorator(db);
+        Datasource compressedDb = new CompressionDecorator(encryptedDb);
+        assertEquals("Base - Decrypted - Decompressed",compressedDb.read());
     }
 
 }
