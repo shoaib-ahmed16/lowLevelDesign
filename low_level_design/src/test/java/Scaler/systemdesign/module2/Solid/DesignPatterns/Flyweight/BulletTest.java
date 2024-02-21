@@ -2,8 +2,6 @@ package Scaler.systemdesign.module2.Solid.DesignPatterns.Flyweight;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class BulletTest {
 
     @Test

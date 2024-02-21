@@ -1,7 +1,10 @@
 package design.level.low.lldDesigns.parkinglot;
 
+import design.level.low.lldDesigns.parkinglot.domain.ParkingFullMessage;
+import design.level.low.lldDesigns.parkinglot.domain.Price;
+import design.level.low.lldDesigns.parkinglot.domain.Ticket;
+import design.level.low.lldDesigns.parkinglot.domain.Vehicle;
 import design.level.low.lldDesigns.parkinglot.service.ParkingSlot;
-import design.level.low.lldDesigns.parkinglot.domain.*;
 import design.level.low.lldDesigns.parkinglot.usedDesignPattern.PriceFactory;
 import design.level.low.lldDesigns.parkinglot.usedDesignPattern.VehicleFactory;
 

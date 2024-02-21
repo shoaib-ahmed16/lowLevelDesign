@@ -2,8 +2,6 @@ package Scaler.systemdesign.module2.Solid.DesignPatterns.Adaptor;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class PaymentProviderTest {
     PaymentProvider adapter= new RazorPayAdaptor();
 //    PaymentProvider adapter2= new PayUAdaptor();

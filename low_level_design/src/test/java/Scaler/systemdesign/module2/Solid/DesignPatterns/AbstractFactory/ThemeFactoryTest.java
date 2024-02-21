@@ -2,7 +2,7 @@ package Scaler.systemdesign.module2.Solid.DesignPatterns.AbstractFactory;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ThemeFactoryTest {
 

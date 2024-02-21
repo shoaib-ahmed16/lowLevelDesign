@@ -1,9 +1,6 @@
 package Scaler.systemdesign.module2.Solid.DesignPatterns.Factory.SimpleFactory;
 
 import Scaler.systemdesign.module2.Solid.DesignPatterns.Factory.ScreenSize;
-import Scaler.systemdesign.module2.Solid.DesignPatterns.Factory.SimpleFactory.Button;
-import Scaler.systemdesign.module2.Solid.DesignPatterns.Factory.SimpleFactory.ButtonFactory;
-import Scaler.systemdesign.module2.Solid.DesignPatterns.Factory.SimpleFactory.SquareButton;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

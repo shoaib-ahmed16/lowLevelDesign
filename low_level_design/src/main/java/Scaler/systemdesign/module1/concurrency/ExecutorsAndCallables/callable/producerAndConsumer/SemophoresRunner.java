@@ -1,6 +1,5 @@
 package Scaler.systemdesign.module1.concurrency.ExecutorsAndCallables.callable.producerAndConsumer;
 
-import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedDeque;
