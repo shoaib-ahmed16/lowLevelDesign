@@ -1,13 +1,8 @@
 package Scaler.systemdesign.module3.tictactao.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -23,5 +18,21 @@ public class Board {
     private List<List<Cell>> initialiseCells(Integer size){
         List<Cell> cellRow =Collections.nCopies(size,new Cell());
         return Collections.nCopies(size,cellRow);
+    }
+    public boolean isEmpty(Integer row,Integer column){
+        return cells.get(row).get(column)==null;
+    }
+    public Cell getCell(int row,int col){
+        return cells.get(row).get(col);
+    }
+    public void update(Cell move){
+        int row=move.getRow();
+        int col=move.getColumn();
+        Cell cell= getCell(row,col);
+        cell.builder()
+                .row(row)
+                .column(col)
+                .symbol(move.getSymbol())
+                .build();
     }
 }

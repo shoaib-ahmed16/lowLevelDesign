@@ -1,7 +1,8 @@
 package Scaler.systemdesign.module3.tictactao.model;
 
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Setter
@@ -18,7 +19,7 @@ public class HumanPlayer extends Player{
     }
 
     @Override
-    public void play() {
-
+    public Cell makeMove(Board board) {
+        return null;
     }
 }

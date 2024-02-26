@@ -2,8 +2,6 @@ package Scaler.systemdesign.module2.Solid.DesignPatterns.Strategy;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class NavigatorTest {
 
     @Test
