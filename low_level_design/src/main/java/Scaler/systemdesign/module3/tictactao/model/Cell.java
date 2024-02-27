@@ -3,18 +3,20 @@ package Scaler.systemdesign.module3.tictactao.model;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Getter
+@Setter
 @NoArgsConstructor
 public class Cell {
     private Integer row;
     private Integer column;
     private GameSymbol symbol;
-    public  Builder builder(){
+    public static Builder  builder(){
         return new Builder();
     }
-    static class Builder{
+    public static class Builder{
         private  Cell cell;
         private Builder(){
             cell=new Cell();

@@ -2,7 +2,7 @@ package Scaler.systemdesign.module3.tictactao.model;
 
 import Scaler.systemdesign.module3.tictactao.model.enums.GameLevel;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import Scaler.systemdesign.module3.tictactao.strategy.RandomStrategy;
+import Scaler.systemdesign.module3.tictactao.strategy.Playing.RandomPlayerStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -28,8 +28,8 @@ class TicTacToeGameTest {
     void testCreateCompleteGame(){
         Game game = Game.builder()
                         .withSize(3)
-                        .withPlayer(new HumanPlayer(GameSymbol.O,"1231","#213",new User()))
-                        .withPlayer(new BotPlayer(GameSymbol.X, GameLevel.EASY,new RandomStrategy()))
+                        .withPlayer(new HumanPlayer(GameSymbol.O,new User()))
+                        .withPlayer(new BotPlayer(GameSymbol.X, GameLevel.EASY,new RandomPlayerStrategy()))
                         .build();
         assertEquals(2,game.getPlayers().size());
 

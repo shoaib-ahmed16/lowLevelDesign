@@ -2,7 +2,7 @@ package Scaler.systemdesign.module3.tictactao.model;
 
 import Scaler.systemdesign.module3.tictactao.model.enums.GameLevel;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import Scaler.systemdesign.module3.tictactao.strategy.PlayerStrategy;
+import Scaler.systemdesign.module3.tictactao.strategy.Playing.PlayerStrategy;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,6 +20,8 @@ public class BotPlayer extends Player{
 
     @Override
     public Cell makeMove(Board board) {
-        return  playerStrategy.makeMove(board);
+        Cell boardCell= playerStrategy.makeMove(board);
+        boardCell.setSymbol(getSymbol());
+        return boardCell;
     }
 }

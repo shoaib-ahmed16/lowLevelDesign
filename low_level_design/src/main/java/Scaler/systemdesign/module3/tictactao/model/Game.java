@@ -3,6 +3,9 @@ package Scaler.systemdesign.module3.tictactao.model;
 import Scaler.systemdesign.module3.tictactao.exception.InvalidMoveException;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameStatus;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
+import Scaler.systemdesign.module3.tictactao.strategy.Winning.DiagonalWinningStrategy;
+import Scaler.systemdesign.module3.tictactao.strategy.Winning.RowWinningStrategy;
+import Scaler.systemdesign.module3.tictactao.strategy.Winning.WinningStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -20,28 +23,34 @@ public class Game {
     private Board board;
     private List<Player> players= new ArrayList<>() ;
     private GameStatus status;
+    private List<WinningStrategy> winningStrategies = List.of(new RowWinningStrategy(),new DiagonalWinningStrategy());
     private int nextPlayerIndex;
+    private  Player winner;
     public void start(){
         // Assign a random value to the next PlayerIndex
-
+        // Random value -> 0 or 1
+        // 0.5 * 2 = 1.0 = 1;
+        // 0.1 * 2 = 0.2 = 0;
+        // 0.8 * 2 = 1.6 = 1;
+        nextPlayerIndex=(int) Math.random() *players.size();
+        status =GameStatus.IN_PROGRESS;
     }
 
     public void makeMove(){
-        // Get the next Move
         Cell move=getNextMove();
         board.update(move);
 
-        //Check for a winner
-        if(checkWinner()!=null){
+        if(checkWinner(move.getSymbol())){
             status =GameStatus.FINISHED;
+            winner=getNextPlayer();
+            return;
         }
         if(checkDraw()){
             status=GameStatus.DRAWN;
+            System.out.println("Game is a Draw");
+            return;
         }
-
         nextPlayerIndex =(nextPlayerIndex +1) % players.size();
-
-
     }
 
     private  Cell getNextMove(){
@@ -55,11 +64,19 @@ public class Game {
       }
     }
 
-    private Player checkWinner(){
-        return null;
+    private boolean checkWinner(GameSymbol symbol){
+        // Implement check rows
+        for(WinningStrategy strategy:winningStrategies){
+            boolean hasWinner=strategy.checkWinner(board,symbol);
+            if(hasWinner){
+                return true;
+            }
+        }
+        return false;
     }
     private boolean checkDraw(){
-        return false;
+        List<Cell> emptyCells=board.getEmptyCells();
+        return emptyCells.isEmpty();
     }
 
     private Game(){
@@ -104,5 +121,8 @@ public class Game {
             return symbols.size()==PLAYER_COUNT;
         }
 
+    }
+    public Player getNextPlayer(){
+        return players.get(nextPlayerIndex);
     }
 }
