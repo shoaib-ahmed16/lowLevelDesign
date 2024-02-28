@@ -1,8 +1,7 @@
-package Scaler.systemdesign.module3.tictactao.strategy.Playing;
+package Scaler.systemdesign.module3.tictactao.designPatterns.PlayingStrategy;
 
 import Scaler.systemdesign.module3.tictactao.model.Board;
 import Scaler.systemdesign.module3.tictactao.model.Cell;
-import Scaler.systemdesign.module3.tictactao.strategy.Playing.PlayerStrategy;
 
 import java.util.List;
 

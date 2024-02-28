@@ -1,10 +1,11 @@
 package Scaler.systemdesign.module3.tictactao.controller;
 
+import Scaler.systemdesign.module3.tictactao.designPatterns.PlayingStrategy.MinMaxIndexPlayingStrategy;
 import Scaler.systemdesign.module3.tictactao.model.*;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameLevel;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameStatus;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import Scaler.systemdesign.module3.tictactao.strategy.Playing.RandomPlayerStrategy;
+import Scaler.systemdesign.module3.tictactao.designPatterns.PlayingStrategy.FirstIndexPlayingStrategy;
 
 import java.util.Scanner;
 
@@ -31,7 +32,17 @@ public class TicTacToe {
             game.getBoard().printBoard();
         }
         if(game.getStatus()==GameStatus.FINISHED){
-            System.out.println("Game won by Payer: "+game.getWinner().getSymbol());
+            Player player=game.getWinner();
+            if(player instanceof BotPlayer) {
+                System.out.println("Game won by Bot :");
+                System.out.println("Name: " + player.getName());
+                System.out.println("Symbol : " + player.getSymbol());
+            }
+            else{
+                System.out.println("Game won by Player :");
+                System.out.println("Name: "+player.getName());
+                System.out.println("Symbol : "+player.getSymbol());
+            }
         }
     }
     public static Player getUserInput(){
@@ -60,7 +71,7 @@ public class TicTacToe {
                 .withSize(boardSize)
                 .withPlayer(player)
                 // Initialise the bot Player
-                .withPlayer(new BotPlayer(decideBotSymbol(player.getSymbol()), GameLevel.EASY,new RandomPlayerStrategy()))
+                .withPlayer(new BotPlayer(decideBotSymbol(player.getSymbol()), GameLevel.EASY,new MinMaxIndexPlayingStrategy()))
                 .build();
     }
     private static GameSymbol decideBotSymbol(GameSymbol symbol){

@@ -1,4 +1,4 @@
-package Scaler.systemdesign.module3.tictactao.strategy.Winning;
+package Scaler.systemdesign.module3.tictactao.designPatterns.WinningStrategy;
 
 import Scaler.systemdesign.module3.tictactao.model.Board;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;

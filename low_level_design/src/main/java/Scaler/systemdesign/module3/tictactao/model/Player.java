@@ -8,5 +8,6 @@ import lombok.Getter;
 @AllArgsConstructor
 public abstract class Player {
     private GameSymbol symbol;
+    private String Name;
     public abstract Cell makeMove(Board board);
 }

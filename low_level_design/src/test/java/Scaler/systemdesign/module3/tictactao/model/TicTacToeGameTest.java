@@ -2,7 +2,7 @@ package Scaler.systemdesign.module3.tictactao.model;
 
 import Scaler.systemdesign.module3.tictactao.model.enums.GameLevel;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import Scaler.systemdesign.module3.tictactao.strategy.Playing.RandomPlayerStrategy;
+import Scaler.systemdesign.module3.tictactao.designPatterns.PlayingStrategy.RandomPlayerStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

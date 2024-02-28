@@ -11,11 +11,10 @@ import java.util.Scanner;
 @Setter
 public class HumanPlayer extends Player{
     private User user;
-
     private Scanner scanner = new Scanner(System.in);
 
     public HumanPlayer(GameSymbol symbol,User user) {
-        super(symbol);
+        super(symbol,user.getName());
         this.user=user;
     }
 

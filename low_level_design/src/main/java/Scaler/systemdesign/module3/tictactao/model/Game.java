@@ -1,17 +1,13 @@
 package Scaler.systemdesign.module3.tictactao.model;
 
+import Scaler.systemdesign.module3.tictactao.designPatterns.WinningStrategy.*;
 import Scaler.systemdesign.module3.tictactao.exception.InvalidMoveException;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameStatus;
 import Scaler.systemdesign.module3.tictactao.model.enums.GameSymbol;
-import Scaler.systemdesign.module3.tictactao.strategy.Winning.DiagonalWinningStrategy;
-import Scaler.systemdesign.module3.tictactao.strategy.Winning.RowWinningStrategy;
-import Scaler.systemdesign.module3.tictactao.strategy.Winning.WinningStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import static java.util.stream.Collectors.toSet;
 
@@ -23,7 +19,7 @@ public class Game {
     private Board board;
     private List<Player> players= new ArrayList<>() ;
     private GameStatus status;
-    private List<WinningStrategy> winningStrategies = List.of(new RowWinningStrategy(),new DiagonalWinningStrategy());
+    private List<WinningStrategy> winningStrategies = List.of(new RowWinningStrategy(),new LeftDiagonalWinningStrategy(),new RightDiagonalWinningStrategy(),new ColumnWinningStrategy());
     private int nextPlayerIndex;
     private  Player winner;
     public void start(){
@@ -76,10 +72,20 @@ public class Game {
     }
     private boolean checkDraw(){
         List<Cell> emptyCells=board.getEmptyCells();
-        return emptyCells.isEmpty();
+        return emptyCells.isEmpty() && getStatus()==GameStatus.IN_PROGRESS;
+    }
+    public void undo(){
+
     }
 
     private Game(){
+        // Sequence of moves -> Stack of moves
+        Stack<Cell> moves;
+
+        // Remove from the stack
+        // Set the player to null on the board
+
+        //update the next player index
 
     }
     public static Builder builder(){
