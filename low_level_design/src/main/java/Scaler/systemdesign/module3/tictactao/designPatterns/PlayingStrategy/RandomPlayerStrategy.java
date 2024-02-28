@@ -5,7 +5,7 @@ import Scaler.systemdesign.module3.tictactao.model.Cell;
 
 import java.util.List;
 
-public class RandomPlayerStrategy implements PlayerStrategy {
+public class RandomPlayerStrategy implements PlayingStrategy {
     @Override
     public Cell makeMove(Board board){
 

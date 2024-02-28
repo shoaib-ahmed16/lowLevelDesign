@@ -5,7 +5,7 @@ import Scaler.systemdesign.module3.tictactao.model.Cell;
 
 import java.util.List;
 
-public class AveragePlayingStrategy implements PlayerStrategy {
+public class AveragePlayingStrategy implements PlayingStrategy {
     private int averageIndex;
     private static final int  divisor=2;
     @Override

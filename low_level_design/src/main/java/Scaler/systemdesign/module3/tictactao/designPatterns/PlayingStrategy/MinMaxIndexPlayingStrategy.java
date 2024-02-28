@@ -5,7 +5,7 @@ import Scaler.systemdesign.module3.tictactao.model.Cell;
 
 import java.util.List;
 
-public class MinMaxIndexPlayingStrategy implements PlayerStrategy {
+public class MinMaxIndexPlayingStrategy implements PlayingStrategy {
     private int value=2;
     private static  final int subtractBy=1;
     private static final int minIndex=0;

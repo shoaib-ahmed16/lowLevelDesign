@@ -5,7 +5,7 @@ import Scaler.systemdesign.module3.tictactao.model.Cell;
 
 import java.util.List;
 
-public class LastIndexPlayingStrategy implements PlayerStrategy{
+public class LastIndexPlayingStrategy implements PlayingStrategy {
     private static  final int subtractBy=1;
     @Override
     public Cell makeMove(Board board) {
